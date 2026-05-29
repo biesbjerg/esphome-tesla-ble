@@ -123,8 +123,6 @@ public:
     bool is_user_present() const;
     bool is_charge_flap_open() const;
     bool is_charging() const { return is_charging_; }
-    bool has_charging_amps() const;
-    bool has_charging_limit() const;
     float get_charging_amps() const;
     float get_charging_limit() const;
     
