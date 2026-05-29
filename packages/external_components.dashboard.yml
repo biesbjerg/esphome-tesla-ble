@@ -1,2 +1,6 @@
 - components: [tesla_ble_vehicle, tesla_ble_listener]
-  source: github://biesbjerg/esphome-tesla-ble/components@evcc-state-accessors
+  source:
+    type: git
+    url: https://github.com/biesbjerg/esphome-tesla-ble.git
+    ref: evcc-state-accessors
+    path: components

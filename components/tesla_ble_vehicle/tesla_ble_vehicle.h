@@ -393,7 +393,7 @@ protected:
 template<typename... Ts> class WakeAction : public Action<Ts...> {
 public:
     WakeAction(TeslaBLEVehicle *parent) : parent_(parent) {}
-    void play(Ts... x) override { parent_->wake_vehicle(); }
+    void play(const Ts &... x) override { parent_->wake_vehicle(); }
 protected:
     TeslaBLEVehicle *parent_;
 };
@@ -401,7 +401,7 @@ protected:
 template<typename... Ts> class PairAction : public Action<Ts...> {
 public:
     PairAction(TeslaBLEVehicle *parent) : parent_(parent) {}
-    void play(Ts... x) override { parent_->start_pairing(); }
+    void play(const Ts &... x) override { parent_->start_pairing(); }
 protected:
     TeslaBLEVehicle *parent_;
 };
@@ -409,7 +409,7 @@ protected:
 template<typename... Ts> class RegenerateKeyAction : public Action<Ts...> {
 public:
     RegenerateKeyAction(TeslaBLEVehicle *parent) : parent_(parent) {}
-    void play(Ts... x) override { parent_->regenerate_key(); }
+    void play(const Ts &... x) override { parent_->regenerate_key(); }
 protected:
     TeslaBLEVehicle *parent_;
 };
@@ -417,7 +417,7 @@ protected:
 template<typename... Ts> class ForceUpdateAction : public Action<Ts...> {
 public:
     ForceUpdateAction(TeslaBLEVehicle *parent) : parent_(parent) {}
-    void play(Ts... x) override { parent_->force_update(); }
+    void play(const Ts &... x) override { parent_->force_update(); }
 protected:
     TeslaBLEVehicle *parent_;
 };
@@ -426,7 +426,7 @@ template<typename... Ts> class SetChargingAction : public Action<Ts...> {
 public:
     SetChargingAction(TeslaBLEVehicle *parent) : parent_(parent) {}
     void set_state(esphome::TemplatableValue<bool, Ts...> state) { state_ = state; }
-    void play(Ts... x) override {
+    void play(const Ts &... x) override {
         bool state = state_.value(x...);
         parent_->set_charging_state(state);
     }
@@ -439,7 +439,7 @@ template<typename... Ts> class SetChargingAmpsAction : public Action<Ts...> {
 public:
     SetChargingAmpsAction(TeslaBLEVehicle *parent) : parent_(parent) {}
     void set_amps(esphome::TemplatableValue<int, Ts...> amps) { amps_ = amps; }
-    void play(Ts... x) override {
+    void play(const Ts &... x) override {
         int amps = amps_.value(x...);
         parent_->set_charging_amps(amps);
     }
@@ -452,7 +452,7 @@ template<typename... Ts> class SetChargingLimitAction : public Action<Ts...> {
 public:
     SetChargingLimitAction(TeslaBLEVehicle *parent) : parent_(parent) {}
     void set_limit(esphome::TemplatableValue<int, Ts...> limit) { limit_ = limit; }
-    void play(Ts... x) override {
+    void play(const Ts &... x) override {
         int limit = limit_.value(x...);
         parent_->set_charging_limit(limit);
     }
