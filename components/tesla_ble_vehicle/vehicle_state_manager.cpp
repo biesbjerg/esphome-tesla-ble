@@ -557,12 +557,20 @@ bool VehicleStateManager::is_charge_flap_open() const {
     return false;
 }
 
+bool VehicleStateManager::has_charging_amps() const {
+    return charging_amps_number_ != nullptr && charging_amps_number_->has_state();
+}
+
+bool VehicleStateManager::has_charging_limit() const {
+    return charging_limit_number_ != nullptr && charging_limit_number_->has_state();
+}
+
 float VehicleStateManager::get_charging_amps() const {
-    return charging_amps_number_ && charging_amps_number_->has_state() ? charging_amps_number_->state : NAN;
+    return charging_amps_number_ ? charging_amps_number_->state : 0.0f;
 }
 
 float VehicleStateManager::get_charging_limit() const {
-    return charging_limit_number_ && charging_limit_number_->has_state() ? charging_limit_number_->state : NAN;
+    return charging_limit_number_ ? charging_limit_number_->state : 0.0f;
 }
 
 // =============================================================================
