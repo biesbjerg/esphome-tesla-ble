@@ -124,6 +124,7 @@ public:
     bool is_charge_flap_open() const;
     bool is_charging() const { return is_charging_; }
     float get_charging_amps() const;
+    float get_charging_limit() const;
     
     // ==========================================================================
     // Dynamic limits
